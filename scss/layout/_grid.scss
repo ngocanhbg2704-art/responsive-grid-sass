@@ -1,0 +1,35 @@
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding-left: $gutter;
+  padding-right: $gutter;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -$gutter;
+  margin-right: -$gutter;
+}
+
+[class*="col-"] {
+  padding-left: $gutter;
+  padding-right: $gutter;
+  width: 100%;
+}
+
+/* Vong lap tao cac cot col-1 den col-12 */
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    width: percentage($i / $grid-columns);
+  }
+}
+
+/* Responsive cho Tablet & Mobile */
+@include respond-to("mobile") {
+  @for $i from 1 through $grid-columns {
+    .col-sm-#{$i} {
+      width: percentage($i / $grid-columns);
+    }
+  }
+}
